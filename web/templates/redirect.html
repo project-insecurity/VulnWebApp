@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>Redirecting...</title>
+    </head>
+    <body>
+        <a href="{{url_redirect}}">Click to continue...</a>
+        <script>
+            document.location = "{{url_redirect|safe}}";
+        </script>
+    </body>
+</html>

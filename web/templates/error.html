@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>{{ title|safe }}</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+        <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <style>
+            div {
+
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 40%;
+                height: auto;
+                width: auto;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="alert alert-{{ alert_type|safe }}" style="margin-top: 20px;">
+            <h3>{{ message|safe }} </h3>
+            <a href="/"><button class="btn btn-{{ alert_type|safe }}">Click to continue...</button></a>
+        </div>  
+           
+        <script src="/js/bootstrap.min.js"></script>
+    </body>
+</html>    

@@ -1,0 +1,80 @@
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <style>
+    h3 {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .form-group, .navbar {
+      width: 35%;
+      background-color: #e9ecef;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .form-group {
+      position: relative;
+      margin-top: 50px;
+      border-radius: 3px;
+      padding: 30px;
+      height: 30%;
+    }
+
+    .navbar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 100%;
+      background-color: #3D3D3D;
+    }
+
+    .section1 {
+      float: left;
+      width: 240px;
+    }
+
+    .section2 {
+      float: right;
+      width: 230px;
+    }
+
+    .form-control {
+      width: 100%;
+      margin: 3px;
+      float: left;
+    }
+
+    .welcomeMsg {
+      position: absolute;
+      left: 7px;
+      top: -35px;
+    }
+
+    .navButtons {
+      text-align: right;
+      position: absolute;
+      right: 7px;
+      top: -35px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-group" style="padding: 15px;">
+    <h1>Login</h1>
+    <form method="POST" action="/index">
+      <input type="text" name="username" placeholder="Username"><br/><br/>
+      <input type="password" name="password" placeholder="Password"><br/><br/>
+      <input class="btn btn-primary" type="submit"><br/>
+    </form>
+    {% if login_error %}
+      {% if reason != None %}
+        <p style="color: red">{{ reason|safe }}</p>
+      {% endif %}
+    {% endif %}
+  </div>
+  <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
