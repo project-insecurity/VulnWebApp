@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+      body {
+        position: relative;
+      }
+      h3 {
+        font-weight: bold;
+      }
+
+      .sticky-footer {
+        display: relative;
+        position: absolute;
+        width: 220px;
+        bottom: 1%;
+        right: 35%;
+        margin-top: 50px;
+        margin-bottom: 1px;
+        height: 25px;
+      }
+
+      .form-group, .navbar {
+        position: inherit;
+        width: 45%;
+        padding: 5px;
+        padding-left: 15px;
+        background-color: #e9ecef;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .form-group {
+        overflow: hidden;
+        position: inherit;
+        border-radius: 3px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      #navigation-menu {
+        overflow:visible;
+        margin-top: 50px;
+        padding: 17px;
+      }
+
+      nav {
+        display: block;
+        position: relative;
+        margin-right: auto;
+        margin-left: auto;
+        width: 45%;
+        height: 35px;
+        border-radius: 3px;
+      }
+
+      .section1 {
+        position: inherit;
+        float: left;
+        width: 240px;
+      }
+
+      .section2 {
+        position: absolute;
+        float: right;
+        top: 5%;
+        right: 10px;
+        width: 280px;
+      }
+
+      .form-control {
+        position: inherit;
+        width: 100%;
+        margin: 3px;
+        float: left;
+      }
+
+      .welcomeMsg {
+        display: inherit;
+        position: absolute;
+        left: 2%;
+        top: 15%;
+      }
+
+      .navButtons {
+        display: inherit;
+        position: absolute;
+        right: 2%;
+        top: 15%;
+      }
+    </style>
+  </head>
+  <nav id="navigation-menu" class="form-group">
+        <div class="welcomeMsg">Welcome, <b>{{ username }}</b>.</div>
+        <div class="navButtons">[<a href="/private/messages/">Private Messages</a>] [<a href="/logout">Logout</a>]</div>
+  </nav>
+  <body>
+    <div style="height: 65%;" class="form-group">
+      <div class="section1">
+        <br/>
+        <form id="upload-file" method="POST" action="/api/upload_file" enctype="multipart/form-data">
+          <h3>File Uploader</h3>  
+          <label for="file">Select a file</label>
+          <input name="file" type="file"/>
+          <button style="width: 100%;" class="btn btn-primary" type="submit">Upload</button>
+        </form>
+        <hr>
+        <form action="/api/password_change/" method="GET">
+          <h3>Change Password</h3>
+          <input class="form-control" type="password" name="password1" placeholder="Password">
+          <input class="form-control" type="password" name="password2" placeholder="Confirm Password">
+          <input class="btn btn-primary" style="width: 100%;" type="submit" value="Change Password">
+        </form>
+      </div>
+      <div class="section2">
+        <div>
+          <h3>Files List</h3>
+          {% for file in file_list %}
+            <p><a href="/api/file/{{ api_key }}/{{ file }}">{{file}}</a></p>
+          {% endfor %}
+        </div>
+        <hr>
+        <div>
+          <h3>API Endpoints</h3>
+          <a href="/api/userinfo/?callback=info">JSONP User Information</a><br>
+          <a href="/api/userinfo/userinfo.txt/?callback=info">JSONP User Information Download</a><br>
+          <a href="/api/userinfo/json/">JSON User Information</a><br>
+          <a href="/api/username/?id=1">Get Username by ID</a><br>
+          <a href="/api/id/?username=admin">Get ID by Username</a><br>
+          <a href="/api/api_key/?id={{ user_id }}">Get My API Key</a><br>
+        </div>
+        <hr>
+        <div>
+            <h3>Resources</h3>
+            <a href="/redirect?url=http://google.com">Google</a><br>
+        </div>         
+    </div>
+  </body>
+  <br>
+  <footer class="sticky-footer">
+      <div class="container">
+          <div class="text-center">
+            <small>Follow the project on <a href="https://github.com/h-yde/VulnWebApp">GitHub <i class="fa fa-github" aria-hidden="true"></i></small>
+          </div>
+      </div>
+  </footer> 
+  <script src="/js/bootstrap.min.js"></script>
+</html>
